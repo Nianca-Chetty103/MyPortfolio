@@ -9,10 +9,10 @@ I know that this journey wont be easy, but I'm committed to improving consistent
 
 I'll be sharing my progress here as I grow.
 
-Facts about me: 
+Facts about me ⭐
 - I am a super ambitious person, that will do whatever it takes to get to where I need to be.
 - hardworking
-- I like 
+- I like trying new things 😄
 
 
 This is day one of trying to get some sort of employment opportunity of trying to get employed by the end of this year.
