@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nianca Chetty — Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --neon-green:#39ff14;
+    --neon-cyan:#00f5ff;
+    --neon-pink:#ff2d78;
+    --neon-yellow:#ffe600;
+    --bg:#070b0f;
+    --bg2:#0d1117;
+    --bg3:#111820;
+    --grid-color:rgba(0,245,255,0.04);
+    --text:#e0e8f0;
+    --muted:#5a7080;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Rajdhani',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(var(--grid-color) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+    background-size:32px 32px;
+    pointer-events:none;z-index:0;
+  }
+  body::after{
+    content:'';position:fixed;inset:0;
+    background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+    pointer-events:none;z-index:0;
+  }
+  section,nav,.hero{position:relative;z-index:1;}
+  nav{
+    position:fixed;top:0;left:0;right:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 32px;
+    background:rgba(7,11,15,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(0,245,255,0.12);
+    z-index:100;
+  }
+  .nav-logo{font-family:'Share Tech Mono',monospace;font-size:14px;color:var(--neon-cyan);letter-spacing:2px;}
+  .nav-logo span{color:var(--neon-green);}
+  .nav-links{display:flex;gap:24px;}
+  .nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--neon-cyan);}
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 32px 60px;text-align:center;flex-direction:column;}
+  .hero-tag{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--neon-green);letter-spacing:4px;margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+  .hero-tag::before,.hero-tag::after{content:'';display:inline-block;width:24px;height:1px;background:var(--neon-green);opacity:0.6;}
+  .hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(52px,10vw,100px);font-weight:700;line-height:0.95;margin-bottom:16px;letter-spacing:-1px;}
+  .hero h1 .line1{display:block;color:#fff;text-shadow:0 0 40px rgba(0,245,255,0.3);}
+  .hero h1 .line2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--neon-cyan);text-shadow:0 0 30px var(--neon-cyan);animation:flicker 4s infinite;}
+  @keyframes flicker{0%,95%,100%{opacity:1;}96%{opacity:0.7;}97%{opacity:1;}98%{opacity:0.5;}99%{opacity:1;}}
+  .hero-sub{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:2px;margin-bottom:40px;}
+  .hero-sub span{color:var(--neon-pink);}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .btn{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;padding:12px 28px;border:1px solid;text-decoration:none;text-transform:uppercase;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+  .btn-primary{border-color:var(--neon-cyan);color:var(--bg);background:var(--neon-cyan);}
+  .btn-primary:hover{background:transparent;color:var(--neon-cyan);box-shadow:0 0 20px rgba(0,245,255,0.3);}
+  .btn-ghost{border-color:rgba(0,245,255,0.3);color:var(--neon-cyan);background:transparent;}
+  .btn-ghost:hover{border-color:var(--neon-cyan);box-shadow:0 0 16px rgba(0,245,255,0.2);}
+  .pixel-avatar{width:80px;height:80px;margin-bottom:32px;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:2px;}
+  .px{width:100%;aspect-ratio:1;}
+  .px-c{background:var(--neon-cyan);}
+  .px-g{background:var(--neon-green);}
+  .px-p{background:var(--neon-pink);}
+  .px-d{background:var(--bg3);}
+  .px-b{background:#1a2a3a;}
+  section{padding:80px 32px;}
+  .section-inner{max-width:900px;margin:0 auto;}
+  .section-label{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--neon-green);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .section-label::before{content:'';display:inline-block;width:8px;height:8px;background:var(--neon-green);animation:blink 1.5s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+  .section-title{font-size:clamp(28px,5vw,48px);font-weight:700;color:#fff;margin-bottom:48px;line-height:1;}
+  .section-title span{color:var(--neon-cyan);}
+  #about{background:var(--bg2);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  @media(max-width:600px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:15px;line-height:1.8;}
+  .about-text p strong{color:var(--text);}
+  .stat-list{display:flex;flex-direction:column;gap:12px;}
+  .stat-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg3);border:1px solid rgba(0,245,255,0.08);border-left:3px solid var(--neon-cyan);}
+  .stat-item .label{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;}
+  .stat-item .val{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--neon-green);}
+  #skills{background:var(--bg);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;}
+  .skill-chip{padding:10px 12px;background:var(--bg3);border:1px solid rgba(0,245,255,0.08);font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;transition:all 0.2s;cursor:default;position:relative;}
+  .skill-chip::before{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--neon-cyan);transition:width 0.3s;}
+  .skill-chip:hover{color:var(--neon-cyan);border-color:rgba(0,245,255,0.3);background:rgba(0,245,255,0.04);}
+  .skill-chip:hover::before{width:100%;}
+  #projects{background:var(--bg2);}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+  .project-card{background:var(--bg3);border:1px solid rgba(0,245,255,0.08);padding:24px;transition:all 0.25s;position:relative;overflow:hidden;}
+  .project-card::after{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 24px 24px 0;border-color:transparent var(--neon-pink) transparent transparent;transition:border-width 0.2s;}
+  .project-card:hover{border-color:rgba(0,245,255,0.3);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,245,255,0.06);}
+  .project-card:hover::after{border-width:0 32px 32px 0;}
+  .project-number{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--neon-pink);letter-spacing:2px;margin-bottom:12px;}
+  .project-name{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .project-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+  .tech-stack{display:flex;flex-wrap:wrap;gap:6px;}
+  .tech-tag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;border:1px solid rgba(57,255,20,0.25);color:var(--neon-green);letter-spacing:1px;}
+  #experience{background:var(--bg);}
+  .timeline{display:flex;flex-direction:column;gap:0;}
+  .timeline-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(0,245,255,0.06);}
+  @media(max-width:500px){.timeline-item{grid-template-columns:1fr;gap:8px;}}
+  .timeline-date{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--neon-yellow);letter-spacing:1px;padding-top:4px;}
+  .timeline-content h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:2px;}
+  .timeline-content .org{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--neon-cyan);letter-spacing:1px;margin-bottom:10px;}
+  .timeline-content p{font-size:13px;color:var(--muted);line-height:1.7;}
+  #certs{background:var(--bg2);}
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+  .cert-item{padding:14px 16px;background:var(--bg3);border:1px solid rgba(0,245,255,0.06);border-left:2px solid var(--neon-pink);font-size:13px;color:var(--muted);transition:color 0.2s,border-color 0.2s;font-family:'Share Tech Mono',monospace;letter-spacing:0.5px;}
+  .cert-item:hover{color:var(--text);border-left-color:var(--neon-cyan);}
+  #contact{background:var(--bg);text-align:center;}
+  .contact-inner{max-width:560px;margin:0 auto;}
+  .contact-inner p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+  .contact-link{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:2px;padding:10px 20px;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;}
+  .contact-link:hover{color:var(--neon-cyan);border-color:var(--neon-cyan);box-shadow:0 0 16px rgba(0,245,255,0.15);}
+  footer{padding:24px 32px;text-align:center;border-top:1px solid rgba(0,245,255,0.06);font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;position:relative;z-index:1;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NC<span>_</span>103</div>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#experience">xp</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="pixel-avatar">
+    <div class="px px-d"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-d"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-c"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-g"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-g"></div><div class="px px-b"></div><div class="px px-c"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-c"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-g"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-g"></div><div class="px px-c"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-g"></div><div class="px px-g"></div><div class="px px-g"></div><div class="px px-b"></div><div class="px px-c"></div>
+    <div class="px px-c"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-b"></div><div class="px px-c"></div>
+    <div class="px px-d"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-c"></div><div class="px px-d"></div>
+  </div>
+  <div class="hero-tag">initializing portfolio</div>
+  <h1>
+    <span class="line1">NIANCA</span>
+    <span class="line2">CHETTY</span>
+  </h1>
+  <p class="hero-sub">BSc Software Engineering &nbsp;|&nbsp; <span>Eduvos '26</span> &nbsp;|&nbsp; Alberton, JHB</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#projects">View Projects</a>
+    <a class="btn btn-ghost" href="#contact">Get In Touch</a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">profile</div>
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>final-year BSc Software Engineering</strong> student at Eduvos, on a mission to build technology that makes a real difference in people's lives.</p>
+        <p>Driven by curiosity and a love for learning — whether that's exploring new programming languages, understanding system design, or levelling up my problem-solving skills.</p>
+        <p>I'm a <strong>Golden Key International Society</strong> member and a <strong>Woolworths Bursary</strong> recipient — both earned through academic excellence and commitment to growth.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat-item"><span class="label">STATUS</span><span class="val">FINAL_YEAR</span></div>
+        <div class="stat-item"><span class="label">DEGREE</span><span class="val">BSc_SE</span></div>
+        <div class="stat-item"><span class="label">INSTITUTION</span><span class="val">EDUVOS</span></div>
+        <div class="stat-item"><span class="label">LOCATION</span><span class="val">JHB_ZA</span></div>
+        <div class="stat-item"><span class="label">CERTS</span><span class="val">AWS + IBM + FCC</span></div>
+        <div class="stat-item"><span class="label">AVAILABLE</span><span class="val">2026 &gt;&gt;</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">tech stack</div>
+    <h2 class="section-title">Skills &amp; <span>Tools</span></h2>
+    <div class="skills-grid">
+      <div class="skill-chip">Java</div>
+      <div class="skill-chip">JavaFX</div>
+      <div class="skill-chip">JavaScript</div>
+      <div class="skill-chip">HTML &amp; CSS</div>
+      <div class="skill-chip">PHP</div>
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">MySQL</div>
+      <div class="skill-chip">MongoDB</div>
+      <div class="skill-chip">Neo4J</div>
+      <div class="skill-chip">TensorFlow</div>
+      <div class="skill-chip">Figma</div>
+      <div class="skill-chip">UX / UI</div>
+      <div class="skill-chip">Cisco Packet Tracer</div>
+      <div class="skill-chip">Networking</div>
+      <div class="skill-chip">Machine Learning</div>
+      <div class="skill-chip">System Design</div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">build log</div>
+    <h2 class="section-title">Projects <span>&amp; Builds</span></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">01 / ACTIVE</div>
+        <div class="project-name">LinkingLocals</div>
+        <div class="project-desc">C2C e-commerce platform tackling South African local trade challenges. Full system design with ERD diagrams, data-flows and low-fidelity prototypes.</div>
+        <div class="tech-stack">
+          <span class="tech-tag">JavaScript</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Figma</span><span class="tech-tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">02 / COMPLETE</div>
+        <div class="project-name">Fake News Classifier</div>
+        <div class="project-desc">NLP-powered tool that analyses articles, detects keyword patterns and rates the likelihood of fake news with a credibility score.</div>
+        <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">NLP</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">03 / COMPLETE</div>
+        <div class="project-name">Image Identifier</div>
+        <div class="project-desc">Machine learning model that identifies objects in images using computer vision — exploring TensorFlow and real-world ML deployment.</div>
+        <div class="tech-stack"><span class="tech-tag">Java</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">ML</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">04 / COMPLETE</div>
+        <div class="project-name">AI Study App</div>
+        <div class="project-desc">Productivity tool designed to help students study smarter — leveraging AI to personalise the learning experience.</div>
+        <div class="tech-stack"><span class="tech-tag">Java</span><span class="tech-tag">AI</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">05 / COMPLETE</div>
+        <div class="project-name">Password Checker</div>
+        <div class="project-desc">Security education tool that evaluates password strength and generates secure alternatives, promoting better cybersecurity habits.</div>
+        <div class="tech-stack"><span class="tech-tag">Java</span><span class="tech-tag">Security</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">06 / COMPLETE</div>
+        <div class="project-name">Tetris (Live)</div>
+        <div class="project-desc">Fully playable browser Tetris with pause, restart and shape rotation. Classic game logic rebuilt from scratch in vanilla JS.</div>
+        <div class="tech-stack"><span class="tech-tag">JavaScript</span><span class="tech-tag">HTML/CSS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">work history</div>
+    <h2 class="section-title">Experience &amp; <span>Leadership</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">APR 2025</div>
+        <div class="timeline-content">
+          <h3>Golden Key Member</h3>
+          <div class="org">GOLDEN KEY INTERNATIONAL SOCIETY</div>
+          <p>Invited to join based on outstanding academic performance — a recognition reserved for the top 15% of students at participating universities.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">JAN 2025 – DEC 2026</div>
+        <div class="timeline-content">
+          <h3>Woolworths Bursary Recipient</h3>
+          <div class="org">WOOLWORTHS</div>
+          <p>Selected for the bursary based on commitment and academic excellence. Developed leadership, team building and self-improvement skills throughout the programme.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">DEC 2025</div>
+        <div class="timeline-content">
+          <h3>Customer Assistant</h3>
+          <div class="org">WOOLWORTHS</div>
+          <p>Developed strong communication, adaptability and multi-tasking skills in a fast-paced retail environment.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">AUG 2022 – JUN 2025</div>
+        <div class="timeline-content">
+          <h3>Mathematics Tutor</h3>
+          <div class="org">KUMON</div>
+          <p>Mentored students from primary through to tertiary mathematics. Strengthened leadership, communication, problem-solving and planning skills over 3 years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="section-inner">
+    <div class="section-label">credentials</div>
+    <h2 class="section-title">Certifications <span>&amp; Awards</span></h2>
+    <div class="certs-grid">
+      <div class="cert-item">AWS: ML Basics</div>
+      <div class="cert-item">AWS: Planning an ML Project</div>
+      <div class="cert-item">IBM: Getting Started with Cybersecurity</div>
+      <div class="cert-item">IBM: IBM &amp; Cybersecurity</div>
+      <div class="cert-item">FreeCodeCamp: Responsive Web Design</div>
+      <div class="cert-item">FreeCodeCamp: JS Data Structures &amp; Algorithms</div>
+      <div class="cert-item">Kumon Mathematics Completer</div>
+      <div class="cert-item">Driver's License</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner contact-inner">
+    <div class="section-label" style="justify-content:center;">contact</div>
+    <h2 class="section-title" style="text-align:center;">Let's <span>Connect</span></h2>
+    <p>Final-year engineer looking for opportunities to build meaningful technology. Open to internships, grad roles and cool projects — let's talk.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:niancachetty102@gmail.com">email</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/nianca-chetty" target="_blank">linkedin</a>
+      <a class="contact-link" href="https://github.com/Nianca-Chetty103" target="_blank">github</a>
+      <a class="contact-link" href="tel:+27616969762">phone</a>
+    </div>
+    <a class="btn btn-primary" href="mailto:niancachetty102@gmail.com">Send a message &rarr;</a>
+  </div>
+</section>
+
+<footer>nianca chetty &nbsp;—&nbsp; software engineer &nbsp;—&nbsp; alberton, jhb &nbsp;—&nbsp; © 2026</footer>
+
+</body>
+</html>
